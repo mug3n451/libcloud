@@ -69,6 +69,7 @@ S3_EU_WEST_HOST = "s3-eu-west-1.amazonaws.com"
 S3_EU_WEST2_HOST = "s3-eu-west-2.amazonaws.com"
 S3_EU_CENTRAL_HOST = "s3-eu-central-1.amazonaws.com"
 S3_EU_NORTH1_HOST = "s3-eu-north-1.amazonaws.com"
+S3_EU_SOUTH1_HOST = "s3-eu-south-1.amazonaws.com
 S3_AP_SOUTH_HOST = "s3-ap-south-1.amazonaws.com"
 S3_AP_SOUTHEAST_HOST = "s3-ap-southeast-1.amazonaws.com"
 S3_AP_SOUTHEAST2_HOST = "s3-ap-southeast-2.amazonaws.com"
@@ -79,6 +80,7 @@ S3_SA_EAST_HOST = "s3-sa-east-1.amazonaws.com"
 S3_SA_SOUTHEAST2_HOST = "s3-sa-east-2.amazonaws.com"
 S3_CA_CENTRAL_HOST = "s3-ca-central-1.amazonaws.com"
 S3_AF_SOUTH1_HOST = "s3.af-south-1.amazonaws.com"
+
 
 # Maps AWS region name to connection hostname
 REGION_TO_HOST_MAP = {
@@ -95,6 +97,7 @@ REGION_TO_HOST_MAP = {
     "eu-west-3": "s3.eu-west-3.amazonaws.com",
     "eu-north-1": "s3.eu-north-1.amazonaws.com",
     "eu-central-1": S3_EU_CENTRAL_HOST,
+    "eu-south-1": S3_EU_SOUTH1_HOST
     "ap-south-1": S3_AP_SOUTH_HOST,
     "ap-southeast-1": S3_AP_SOUTHEAST_HOST,
     "ap-southeast-2": S3_AP_SOUTHEAST2_HOST,
@@ -1423,6 +1426,14 @@ class S3EUWest2StorageDriver(S3StorageDriver):
     ex_location_name = "eu-west-2"
     region_name = "eu-west-2"
 
+class S3EUSouth1Connection(S3SignatureV4Connection):
+    host = S3_EU_SOUTH1_HOST
+
+class S3EUSouth1StorageDriver(S3StorageDriver):
+    name = "Amazon S3 (eu-south-1)"
+    connectionCls = S3EUWest2Connection
+    ex_location_name = "eu-south-1"
+    region_name = "eu-south-1"
 
 class S3EUCentralConnection(S3SignatureV4Connection):
     host = S3_EU_CENTRAL_HOST
